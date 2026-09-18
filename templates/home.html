@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block content %}
+<section class="hero">
+<div class="hero-bg"></div><div class="scanlines"></div>
+<div class="hero-copy"><p class="eyebrow">MILLENNIUM ARCHIVE / SUBJECT 07</p>
+<h1>SCH<span>R</span>ÖDINGER</h1><p class="sub">THE CAT THAT EXISTS<br>WHEREVER HE WANTS.</p>
+<div class="hero-actions"><a class="btn" href="/character/">ENTER ARCHIVE</a><a class="textlink" href="/abilities/">VIEW ABILITIES ↗</a></div></div>
+<div class="cat-symbol">猫</div><div class="vertical">HELLSING ULTIMATE</div>
+</section>
+<section class="intro wrap"><div class="section-no">01 / IDENTITY</div><div><p class="kicker">I AM HERE.</p><h2>And also<br><i>nowhere.</i></h2><p class="lead">Шрёдингер — один из самых необычных персонажей Millennium. Его существование связано с идеей субъективного восприятия себя: он может находиться там, где считает себя находящимся.</p><a class="arrow" href="/character/">READ FILE →</a></div></section>
+<section class="redband"><div class="wrap band"><span>UNKNOWN LOCATION</span><strong>IF YOU CAN PERCEIVE ME, I EXIST.</strong><span>UNKNOWN LOCATION</span></div></section>
+<section class="quotes wrap"><div class="section-no">02 / VOICE</div><div><p class="kicker">ARCHIVE QUOTES</p>{% for q in quotes %}<blockquote>“{{ q.text }}”{% if q.source %}<cite>— {{ q.source }}</cite>{% endif %}</blockquote>{% empty %}<blockquote>“Я здесь. И нигде.”<cite>— Шрёдингер</cite></blockquote>{% endfor %}<a class="arrow" href="/quotes/">ALL QUOTES →</a></div></section>
+<section class="gallery-preview wrap"><div class="section-no">03 / VISUALS</div><div><p class="kicker">VISUAL ARCHIVE</p><div class="grid">{% for item in gallery %}<img src="{{ item.image_url }}" alt="{{ item.title }}" loading="lazy">{% empty %}<div class="placeholder">Добавь изображения через /admin/</div>{% endfor %}</div><a class="arrow" href="/gallery/">OPEN GALLERY →</a></div></section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% load static %}
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}SCHRÖDINGER — Hellsing Ultimate{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head><body>
+<div class="noise"></div><div class="cursor"></div>
+<header class="nav"><a class="logo" href="/">SCHRÖDINGER<span>_</span></a>
+<nav><a href="/character/">CHARACTER</a><a href="/abilities/">ABILITIES</a><a href="/quotes/">QUOTES</a><a href="/gallery/">GALLERY</a></nav>
+<button class="menu" aria-label="menu">☰</button></header>
+<main>{% block content %}{% endblock %}</main>
+<footer><span>MILLENNIUM ARCHIVE</span><span>HELLSING ULTIMATE • FAN SITE</span></footer>
+<script src="{% static 'js/main.js' %}"></script></body></html>

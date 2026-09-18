@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block title %}Quotes — SCHRÖDINGER{% endblock %}{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">03 / AUDIO TRANSCRIPT</p><h1>QUOTES</h1></section><section class="quote-list wrap">{% for q in quotes %}<article><span>0{{ forloop.counter }}</span><blockquote>“{{ q.text }}”</blockquote><small>{{ q.source }}</small></article>{% empty %}<article><span>01</span><blockquote>“Я здесь. И нигде.”</blockquote><small>SCHRÖDINGER</small></article>{% endfor %}</section>{% endblock %}

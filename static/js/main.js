@@ -1,0 +1,3 @@
+const c=document.querySelector('.cursor');document.addEventListener('mousemove',e=>{if(c){c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'}});document.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',()=>c?.classList.add('big')));document.querySelectorAll('a').forEach(a=>a.addEventListener('mouseleave',()=>c?.classList.remove('big')));
+const menu=document.querySelector('.menu'),nav=document.querySelector('nav');menu?.addEventListener('click',()=>nav.classList.toggle('open'));
+const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});document.querySelectorAll('.article,.cards article,.quote-list article,.gallery figure,.grid img').forEach(x=>obs.observe(x));
