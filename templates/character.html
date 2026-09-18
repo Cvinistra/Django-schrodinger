@@ -5,25 +5,58 @@
   <img src="{{ person.image }}" alt="{{ person.name }}">
   <div><p class="eyebrow">CHARACTER FILE / {{ person.faction }}</p><h1>{{ person.name }}</h1><p class="sub">{{ person.en }} · {{ person.role }}</p><p class="character-intro">{{ person.text }}</p></div>
 </section>
-<section class="version-section wrap">
-  <div class="section-no">01 / THREE VERSIONS</div>
+
+<section class="character-story wrap">
+  <div class="section-no">01 / CHARACTER HISTORY</div>
   <div>
-    <p class="kicker">СРАВНЕНИЕ ОБРАЗОВ</p>
-    <h2>Один персонаж.<br><i>Три версии.</i></h2>
-    <div class="version-grid">
-      {% for key,label,image,note in versions %}
-      <article class="version-card {% if not image %}empty{% endif %}">
-        <div class="version-label">{{ label }}</div>
-        {% if image %}<img src="{{ image }}" alt="{{ person.name }} — {{ label }}" loading="lazy">{% else %}<div class="image-empty">ОБРАЗ НЕ ДОБАВЛЕН</div>{% endif %}
-        <div class="version-copy"><h3>{{ label }}</h3><p>{{ note }}</p></div>
-      </article>
+    <p class="kicker">ВЫБЕРИ ВЕРСИЮ</p>
+    <h2>История {{ person.name }}<br><i>в каждой версии Hellsing.</i></h2>
+    <p class="story-lead">Один персонаж может иметь разную роль, судьбу и развитие в манге, TV-аниме 2001 года и Hellsing Ultimate. Выбери версию ниже — текст страницы изменится и покажет именно эту линию.</p>
+
+    <div class="version-tabs">
+      {% for v in versions %}
+      <a href="?version={{ v.key }}" class="version-tab {% if selected.key == v.key %}active{% endif %}">
+        <span>{{ v.icon }}</span><b>{{ v.label }}</b><small>{{ v.note }}</small>
+      </a>
       {% endfor %}
     </div>
-    <p class="credit">Изображения в демо-версии используются как справочный key art/превью. Для публичного релиза лучше заменить их на материалы, права на размещение которых у тебя есть.</p>
+
+    {% if selected %}
+    <article class="selected-version">
+      <div class="selected-heading"><span>{{ selected.icon }}</span><div><p class="eyebrow">SELECTED VERSION</p><h3>{{ selected.label }}</h3><small>{{ selected.note }}</small></div></div>
+      {% if selected.image %}<img class="selected-image" src="{{ selected.image }}" alt="{{ person.name }} — {{ selected.label }}">{% endif %}
+      <div class="selected-story">{{ selected.story }}</div>
+    </article>
+    {% endif %}
   </div>
 </section>
-<section class="article wrap">
-  <div class="factbox"><span>FACTION</span><b>{{ person.faction }}</b><span>ROLE</span><b>{{ person.role }}</b><span>APPEARANCE</span><b>СРАВНЕНИЕ 3 ВЕРСИЙ</b></div>
-  <div><h2>История персонажа</h2><p>{{ person.story }}</p>{% if person.quote %}<p class="quote-big">“{{ person.quote }}”</p>{% endif %}<a class="arrow" href="/characters/">← ВСЕ ПЕРСОНАЖИ</a></div>
+
+<section class="version-section wrap">
+  <div class="section-no">02 / VISUAL VERSIONS</div>
+  <div>
+    <p class="kicker">ВИЗУАЛЬНОЕ СРАВНЕНИЕ</p>
+    <h2>Как менялся<br><i>образ.</i></h2>
+    <div class="version-grid">
+      {% for v in versions %}
+      <a href="?version={{ v.key }}" class="version-card {% if selected.key == v.key %}selected-card{% endif %}">
+        <div class="version-label">{{ v.icon }} {{ v.label }}</div>
+        {% if v.image %}<img src="{{ v.image }}" alt="{{ person.name }} — {{ v.label }}" loading="lazy">{% else %}<div class="image-empty">ОБРАЗ НЕ ДОБАВЛЕН</div>{% endif %}
+        <div class="version-copy"><h3>{{ v.label }}</h3><p>{{ v.note }}</p></div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
 </section>
+
+{% if quotes %}
+<section class="article wrap">
+  <div class="factbox"><span>FACTION</span><b>{{ person.faction }}</b><span>ROLE</span><b>{{ person.role }}</b><span>QUOTES</span><b>{{ quotes|length }}</b></div>
+  <div><h2>Цитаты</h2>
+    {% for q in quotes %}
+      <div class="character-quote"><div class="quote-lang">🇬🇧 ENGLISH</div><blockquote>“{{ q.en }}”</blockquote><div class="quote-lang ru">🇷🇺 РУССКИЙ</div><blockquote>«{{ q.ru }}»</blockquote><small>{{ q.source }}</small></div>
+    {% endfor %}
+    <a class="arrow" href="/characters/">← ВСЕ ПЕРСОНАЖИ</a>
+  </div>
+</section>
+{% endif %}
 {% endblock %}
