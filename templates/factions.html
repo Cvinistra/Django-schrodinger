@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block title %}Фракции Hellsing — Архив{% endblock %}{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">03 / POWER STRUCTURES</p><h1>ФРАКЦИИ</h1><p>THREE SIDES OF THE CONFLICT</p></section>
+<section class="faction-page wrap">{% for name,title,text in factions %}<article><span>{{ name }}</span><h2>{{ title }}</h2><p>{{ text }}</p></article>{% endfor %}</section>
+{% endblock %}

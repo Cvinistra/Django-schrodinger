@@ -1,14 +1,45 @@
-# SCHRÖDINGER — Django fan site
+# Hellsing Archive — Django
 
-## Запуск
-1. Установи Python 3.11+.
-2. `python -m venv .venv`
-3. Windows: `.venv\\Scripts\\activate` / macOS/Linux: `source .venv/bin/activate`
-4. `pip install -r requirements.txt`
-5. `python manage.py migrate`
-6. `python manage.py createsuperuser`
-7. `python manage.py runserver`
+Фан-сайт по вселенной Hellsing: манга, Hellsing Ultimate, история создания, персонажи, фракции, цитаты и галерея.
 
-Открой http://127.0.0.1:8000/ и админку http://127.0.0.1:8000/admin/.
+## Локальный запуск
 
-В админке можно добавлять цитаты и изображения галереи. Для изображений используются URL, поэтому проект не содержит защищённых авторским правом кадров из аниме.
+```powershell
+py -m pip install -r requirements.txt
+py manage.py migrate
+py manage.py runserver
+```
+
+Открыть: http://127.0.0.1:8000/
+
+## Render
+
+Build command:
+
+```text
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+```
+
+Start command:
+
+```text
+gunicorn config.wsgi:application
+```
+
+Environment variable:
+
+```text
+SECRET_KEY=your-secret-key
+```
+
+## Разделы
+
+- `/` — главная
+- `/history/` — история манги и адаптаций
+- `/characters/` — персонажи и отдельные досье
+- `/factions/` — Hellsing / Iscariot / Millennium
+- `/quotes/` — цитаты
+- `/gallery/` — галерея
+- `/admin/` — админка для Quote и GalleryItem
+
+Часть демо-изображений взята из Wikimedia Commons; перед коммерческим или повторным использованием проверяйте лицензию конкретного файла.

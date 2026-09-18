@@ -1,2 +1,7 @@
-{% extends 'base.html' %}{% block title %}Gallery — SCHRÖDINGER{% endblock %}{% block content %}
-<section class="pagehead wrap"><p class="eyebrow">04 / VISUAL ARCHIVE</p><h1>GALLERY</h1></section><section class="gallery wrap">{% for item in gallery %}<figure><img src="{{ item.image_url }}" alt="{{ item.title }}"><figcaption>{{ item.title }}{% if item.caption %}<small>{{ item.caption }}</small>{% endif %}</figcaption></figure>{% empty %}<p>Галерея пока пуста. Добавь изображения в Django Admin.</p>{% endfor %}</section>{% endblock %}
+{% extends 'base.html' %}{% block title %}Галерея Hellsing — Архив{% endblock %}{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">05 / VISUAL ARCHIVE</p><h1>ГАЛЕРЕЯ</h1><p>CHARACTERS · SYMBOLS · COSPLAY</p></section>
+<section class="gallery wrap">
+{% for p in characters %}<figure><img src="{{ p.image }}" alt="{{ p.name }}"><figcaption>{{ p.name }}<small>{{ p.faction }} · {{ p.role }}</small></figcaption></figure>{% endfor %}
+{% for item in gallery %}<figure><img src="{{ item.image_url }}" alt="{{ item.title }}"><figcaption>{{ item.title }}<small>{{ item.caption }}</small></figcaption></figure>{% endfor %}
+</section><p class="credit wrap">Часть визуалов в этом демо взята из Wikimedia Commons и относится к косплею/символике; проверяй лицензию конкретного файла перед дальнейшим использованием. Ссылки на страницы файлов доступны через изображения.</p>
+{% endblock %}

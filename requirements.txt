@@ -1,5 +1,4 @@
-Django
-gunicorn
-whitenoise
-dj-database-url
-psycopg2-binary
+Django>=6.1,<6.2
+gunicorn>=23.0
+whitenoise>=6.9
+dj-database-url>=3.1

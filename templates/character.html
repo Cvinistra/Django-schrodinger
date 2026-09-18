@@ -1,5 +1,4 @@
-{% extends 'base.html' %}{% block title %}Character — SCHRÖDINGER{% endblock %}{% block content %}
-<section class="pagehead wrap"><p class="eyebrow">01 / CHARACTER FILE</p><h1>SCHRÖDINGER</h1><p>THE MILLENNIUM WEREWOLF? NO. SOMETHING STRANGER.</p></section>
-<section class="article wrap"><div class="factbox"><span>NAME</span><b>Schrödinger</b><span>FACTION</span><b>Millennium</b><span>ROLE</span><b>Officer / Agent</b><span>STATUS</span><b class="red">UNKNOWN</b></div>
-<div><h2>Улыбка, за которой нет координат.</h2><p>Шрёдингер — персонаж из <i>Hellsing Ultimate</i>, созданный вокруг образа кота и знаменитого мысленного эксперимента. Он выглядит беззаботно и игриво, но его способность делает его существование крайне необычным.</p><p>Визуально персонаж сочетает милую внешность с холодной эстетикой Millennium: кошачьи черты, форма организации и неизменная улыбка.</p><p class="quote-big">“I am everywhere…<br>and nowhere.”</p></div></section>
+{% extends 'base.html' %}{% block title %}{{ person.name }} — Hellsing Archive{% endblock %}{% block content %}
+<section class="character-hero"><img src="{{ person.image }}" alt="{{ person.name }}"><div><p class="eyebrow">CHARACTER FILE / {{ person.faction }}</p><h1>{{ person.name }}</h1><p class="sub">{{ person.en }} · {{ person.role }}</p></div></section>
+<section class="article wrap"><div class="factbox"><span>FACTION</span><b>{{ person.faction }}</b><span>ROLE</span><b>{{ person.role }}</b><span>FILE</span><b>OPEN</b></div><div><h2>{{ person.text }}</h2><p>{{ person.story }}</p><p class="quote-big">“{{ person.quote }}”</p><a class="arrow" href="/characters/">← ВСЕ ПЕРСОНАЖИ</a></div></section>
 {% endblock %}

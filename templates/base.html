@@ -1,15 +1,16 @@
 {% load static %}
 <!doctype html><html lang="ru"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{% block title %}SCHRÖDINGER — Hellsing Ultimate{% endblock %}</title>
+<title>{% block title %}HELLSING ARCHIVE — Hellsing{% endblock %}</title>
+<meta name="description" content="Фан-архив Hellsing: манга, Hellsing Ultimate, история, персонажи, фракции, цитаты и галерея.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head><body>
-<div class="noise"></div><div class="cursor"></div>
-<header class="nav"><a class="logo" href="/">SCHRÖDINGER<span>_</span></a>
-<nav><a href="/character/">CHARACTER</a><a href="/abilities/">ABILITIES</a><a href="/quotes/">QUOTES</a><a href="/gallery/">GALLERY</a></nav>
+<div class="noise"></div>
+<header class="nav"><a class="logo" href="/">HELLSING<span>_</span></a>
+<nav><a href="/history/">ИСТОРИЯ</a><a href="/plot/">СЮЖЕТ</a><a href="/adaptations/">ЭКРАНИЗАЦИИ</a><a href="/characters/">ПЕРСОНАЖИ</a><a href="/factions/">ФРАКЦИИ</a><a href="/quotes/">ЦИТАТЫ</a><a href="/gallery/">ГАЛЕРЕЯ</a></nav>
 <button class="menu" aria-label="menu">☰</button></header>
 <main>{% block content %}{% endblock %}</main>
-<footer><span>MILLENNIUM ARCHIVE</span><span>HELLSING ULTIMATE • FAN SITE</span></footer>
+<footer><span>HELLSING ARCHIVE</span><span>MANGA • ULTIMATE • WAR WITH THE UNDEAD • FAN SITE</span></footer>
 <script src="{% static 'js/main.js' %}"></script></body></html>

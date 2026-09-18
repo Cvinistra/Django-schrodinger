@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block title %}Персонажи Hellsing — Архив{% endblock %}{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">02 / CHARACTER DOSSIERS</p><h1>ПЕРСОНАЖИ</h1><p>ALL SIDES OF THE WAR</p></section>
+<section class="characters-page wrap">{% for p in characters %}<a class="char-card large" href="/characters/{{ p.slug }}/"><img src="{{ p.image }}" alt="{{ p.name }}"><div><span>{{ p.faction }}</span><h2>{{ p.name }}</h2><p>{{ p.role }}</p><small>{{ p.text }}</small></div></a>{% endfor %}</section>
+{% endblock %}
