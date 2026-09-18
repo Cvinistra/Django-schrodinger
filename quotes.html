@@ -2,6 +2,7 @@
 {% block title %}Цитаты — Hellsing Archive{% endblock %}
 {% block content %}
 <section class="pagehead wrap"><p class="eyebrow">05 / QUOTE ARCHIVE</p><h1>ЦИТАТЫ</h1><p>ENGLISH → РУССКИЙ</p>
-<div class="quote-filters"><a href="/quotes/" class="{% if not version %}active{% endif %}">ВСЕ</a><a href="?version=manga" class="{% if version == 'manga' %}active{% endif %}">МАНГА</a><a href="?version=tv2001" class="{% if version == 'tv2001' %}active{% endif %}">2001</a><a href="?version=ultimate" class="{% if version == 'ultimate' %}active{% endif %}">ULTIMATE</a></div></section>
+<div class="quote-filters"><a href="/quotes/" class="{% if not version %}active{% endif %}">ВСЕ</a><a href="?version=manga" class="{% if version == 'manga' %}active{% endif %}">МАНГА</a><a href="?version=tv2001" class="{% if version == 'tv2001' %}active{% endif %}">2001</a><a href="?version=ultimate" class="{% if version == 'ultimate' %}active{% endif %}">ULTIMATE</a></div>
+</section>
 <section class="quote-list wrap">{% for q in quotes %}<article><span>{{ forloop.counter|stringformat:'02d' }}</span><div><div class="quote-lang">🇬🇧 ENGLISH</div><blockquote>“{{ q.en }}”</blockquote><div class="quote-lang ru">🇷🇺 РУССКИЙ</div><blockquote>«{{ q.ru }}»</blockquote><small>{{ q.character }} · {{ q.source }}<br>{{ q.note }}</small></div></article>{% empty %}<p class="story-lead">Для этой версии пока нет добавленных цитат.</p>{% endfor %}</section>
 {% endblock %}

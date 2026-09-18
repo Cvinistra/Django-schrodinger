@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Галерея Hellsing — Архив{% endblock %}
+{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">06 / VISUAL ARCHIVE</p><h1>ГАЛЕРЕЯ</h1><p>ОРИГИНАЛЬНЫЕ КАДРЫ · MANGA ART · VERSION REFERENCE</p></section>
+<section class="gallery wrap">
+{% for item in gallery %}<figure><img src="{{ item.image_url }}" alt="{{ item.title }}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden-fallback')"><div class="image-fallback gallery-fallback hidden-fallback">{{ item.title }}<small>КАДР НЕ ЗАГРУЗИЛСЯ</small></div><figcaption>{{ item.title }}<small>{{ item.caption }}</small></figcaption></figure>{% endfor %}
+</section>
+<p class="credit wrap">Важно: изображения персонажей/кадры являются авторскими материалами соответствующих правообладателей. В архиве используются внешние изображения как визуальные ссылки; для публичного проекта лучше заменить их собственными лицензированными файлами или кадрами, право на использование которых у тебя есть.</p>
+{% endblock %}

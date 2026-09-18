@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Сюжет — Hellsing Archive{% endblock %}
+{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">03 / STORY ARCHIVE</p><h1>СЮЖЕТ</h1><p>МАНГА · ВОЙНА С НЕЧИСТЬЮ · ULTIMATE</p></section>
+
+<section class="chronicle wrap"><div class="section-no">MANGA / SOURCE</div><div>
+<p class="story-lead">Основная линия Hellsing проходит от Чеддера и первых столкновений с Искариотом до войны Millennium и возвращения Алукарда. Ниже — последовательность ключевых арок без смешивания с финалом TV 2001.</p>
+{% for code,title,text in plot_arcs %}<article class="timeline big"><b>{{ code }}</b><div><h3>{{ title }}</h3><p>{{ text }}</p></div></article>{% endfor %}
+</div></section>
+
+<section class="tv-story"><div class="wrap"><p class="kicker">ВЕРСИЯ 2001</p><h2>Война с нечистью — все 13 серий</h2><p class="story-lead">TV-аниме использует ранние события манги, а затем строит самостоятельную линию FREAK и Инкогнито. Поэтому его финал здесь вынесен отдельно.</p>
+<div class="episode-grid detailed">{% for e in tv_episodes %}<article><span>ORDER {{ e.n|stringformat:'02d' }} · {{ e.status }}</span><h3>{{ e.title }}</h3><small>{{ e.ru_title }} · {{ e.arc }}</small><p>{{ e.text }}</p></article>{% endfor %}</div></div></section>
+
+<section class="chronicle wrap ultimate-story"><div class="section-no">ULTIMATE / OVA</div><div>
+<p class="story-lead">Ultimate состоит из 10 OVA и следует основной манге значительно ближе, чем TV-сериал. Здесь раскрыта вся война Millennium — от объявления Майора до финального возвращения Алукарда.</p>
+{% for e in ultimate_episodes %}<article class="timeline big"><b>OVA {{ e.n|stringformat:'02d' }}</b><div><h3>{{ e.title }} — {{ e.arc }}</h3><p>{{ e.text }}</p></div></article>{% endfor %}
+</div></section>
+{% endblock %}

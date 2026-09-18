@@ -1,7 +1,7 @@
-{% extends 'base.html' %}{% block title %}Галерея Hellsing — Архив{% endblock %}{% block content %}
-<section class="pagehead wrap"><p class="eyebrow">05 / VISUAL ARCHIVE</p><h1>ГАЛЕРЕЯ</h1><p>CHARACTERS · SYMBOLS · COSPLAY</p></section>
-<section class="gallery wrap">
-{% for p in characters %}<figure><img src="{{ p.image }}" alt="{{ p.name }}"><figcaption>{{ p.name }}<small>{{ p.faction }} · {{ p.role }}</small></figcaption></figure>{% endfor %}
-{% for item in gallery %}<figure><img src="{{ item.image_url }}" alt="{{ item.title }}"><figcaption>{{ item.title }}<small>{{ item.caption }}</small></figcaption></figure>{% endfor %}
-</section><p class="credit wrap">Часть визуалов в этом демо взята из Wikimedia Commons и относится к косплею/символике; проверяй лицензию конкретного файла перед дальнейшим использованием. Ссылки на страницы файлов доступны через изображения.</p>
+{% extends 'base.html' %}
+{% block title %}Галерея Hellsing — Архив{% endblock %}
+{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">06 / VISUAL ARCHIVE</p><h1>ГАЛЕРЕЯ</h1><p>ОРИГИНАЛЬНЫЕ КАДРЫ · MANGA ART · VERSION REFERENCE</p></section>
+<section class="gallery wrap">{% for item in gallery %}<figure><img src="{{ item.image_url }}" alt="{{ item.title }}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden-fallback')"><div class="image-fallback gallery-fallback hidden-fallback">{{ item.title }}<small>КАДР НЕ ЗАГРУЗИЛСЯ</small></div><figcaption>{{ item.title }}<small>{{ item.caption }}</small></figcaption></figure>{% endfor %}</section>
+<p class="credit wrap">Изображения персонажей и кадры принадлежат соответствующим правообладателям. Для публичной публикации лучше заменить внешние изображения собственными лицензированными файлами или материалами, право на использование которых у тебя есть.</p>
 {% endblock %}

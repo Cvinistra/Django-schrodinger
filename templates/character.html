@@ -2,61 +2,31 @@
 {% block title %}{{ person.name }} — Hellsing Archive{% endblock %}
 {% block content %}
 <section class="character-hero">
-  <img src="{{ person.image }}" alt="{{ person.name }}">
+  {% if person.image %}<img src="{{ person.image }}" alt="{{ person.name }}" onerror="this.style.display='none'">{% else %}<div class="hero-image-fallback">{{ person.name }}</div>{% endif %}
   <div><p class="eyebrow">CHARACTER FILE / {{ person.faction }}</p><h1>{{ person.name }}</h1><p class="sub">{{ person.en }} · {{ person.role }}</p><p class="character-intro">{{ person.text }}</p></div>
 </section>
-
 <section class="character-story wrap">
-  <div class="section-no">01 / CHARACTER HISTORY</div>
-  <div>
-    <p class="kicker">ВЫБЕРИ ВЕРСИЮ</p>
-    <h2>История {{ person.name }}<br><i>в каждой версии Hellsing.</i></h2>
-    <p class="story-lead">Один персонаж может иметь разную роль, судьбу и развитие в манге, TV-аниме 2001 года и Hellsing Ultimate. Выбери версию ниже — текст страницы изменится и покажет именно эту линию.</p>
-
-    <div class="version-tabs">
-      {% for v in versions %}
-      <a href="?version={{ v.key }}" class="version-tab {% if selected.key == v.key %}active{% endif %}">
-        <span>{{ v.icon }}</span><b>{{ v.label }}</b><small>{{ v.note }}</small>
-      </a>
-      {% endfor %}
-    </div>
-
-    {% if selected %}
-    <article class="selected-version">
+  <div class="section-no">01 / VERSION DOSSIERS</div>
+  <div><p class="kicker">ВЫБЕРИ ЭКРАНИЗАЦИЮ</p><h2>История {{ person.name }}<br><i>именно в этой версии.</i></h2>
+    <p class="story-lead">Здесь не смешиваются разные линии. Выбирай мангу, TV 2001 года или Ultimate — ниже показывается история персонажа именно в выбранной версии.</p>
+    <div class="version-tabs">{% for v in versions %}<a href="?version={{ v.key }}" class="version-tab {% if selected.key == v.key %}active{% endif %}"><span>{{ v.icon }}</span><b>{{ v.label }}</b><small>{{ v.note }}</small></a>{% endfor %}</div>
+    {% if selected %}<article class="selected-version">
       <div class="selected-heading"><span>{{ selected.icon }}</span><div><p class="eyebrow">SELECTED VERSION</p><h3>{{ selected.label }}</h3><small>{{ selected.note }}</small></div></div>
-      {% if selected.image %}<img class="selected-image" src="{{ selected.image }}" alt="{{ person.name }} — {{ selected.label }}">{% endif %}
+      {% if selected.image %}<img class="selected-image" src="{{ selected.image }}" alt="{{ person.name }} — {{ selected.label }}" onerror="this.style.display='none'">{% else %}<div class="selected-image image-fallback tall">{{ person.name }}<small>ОРИГИНАЛЬНЫЙ КАДР ДЛЯ ЭТОЙ ВЕРСИИ ЕЩЁ НЕ ДОБАВЛЕН</small></div>{% endif %}
       <div class="selected-story">{{ selected.story }}</div>
-    </article>
-    {% endif %}
+    </article>{% endif %}
   </div>
 </section>
-
 <section class="version-section wrap">
-  <div class="section-no">02 / VISUAL VERSIONS</div>
-  <div>
-    <p class="kicker">ВИЗУАЛЬНОЕ СРАВНЕНИЕ</p>
-    <h2>Как менялся<br><i>образ.</i></h2>
-    <div class="version-grid">
-      {% for v in versions %}
-      <a href="?version={{ v.key }}" class="version-card {% if selected.key == v.key %}selected-card{% endif %}">
-        <div class="version-label">{{ v.icon }} {{ v.label }}</div>
-        {% if v.image %}<img src="{{ v.image }}" alt="{{ person.name }} — {{ v.label }}" loading="lazy">{% else %}<div class="image-empty">ОБРАЗ НЕ ДОБАВЛЕН</div>{% endif %}
-        <div class="version-copy"><h3>{{ v.label }}</h3><p>{{ v.note }}</p></div>
-      </a>
-      {% endfor %}
-    </div>
+  <div class="section-no">02 / VISUAL VERSIONS</div><div><p class="kicker">ТРИ ОБРАЗА</p><h2>Как менялся<br><i>персонаж.</i></h2>
+    <div class="version-grid">{% for v in versions %}<a href="?version={{ v.key }}" class="version-card {% if selected.key == v.key %}selected-card{% endif %}">
+      <div class="version-label">{{ v.icon }} {{ v.label }}</div>
+      {% if v.image %}<img src="{{ v.image }}" alt="{{ person.name }} — {{ v.label }}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden-fallback')"><div class="image-empty hidden-fallback">{{ person.name }}<small>КАДР НЕ ЗАГРУЗИЛСЯ</small></div>{% else %}<div class="image-empty">{{ person.name }}<small>ОРИГИНАЛЬНЫЙ ВИЗУАЛ НЕ ДОБАВЛЕН</small></div>{% endif %}
+      <div class="version-copy"><h3>{{ v.label }}</h3><p>{{ v.note }}</p></div>
+    </a>{% endfor %}</div>
   </div>
 </section>
-
-{% if quotes %}
-<section class="article wrap">
-  <div class="factbox"><span>FACTION</span><b>{{ person.faction }}</b><span>ROLE</span><b>{{ person.role }}</b><span>QUOTES</span><b>{{ quotes|length }}</b></div>
-  <div><h2>Цитаты</h2>
-    {% for q in quotes %}
-      <div class="character-quote"><div class="quote-lang">🇬🇧 ENGLISH</div><blockquote>“{{ q.en }}”</blockquote><div class="quote-lang ru">🇷🇺 РУССКИЙ</div><blockquote>«{{ q.ru }}»</blockquote><small>{{ q.source }}</small></div>
-    {% endfor %}
-    <a class="arrow" href="/characters/">← ВСЕ ПЕРСОНАЖИ</a>
-  </div>
-</section>
-{% endif %}
+{% if quotes %}<section class="article wrap"><div class="factbox"><span>FACTION</span><b>{{ person.faction }}</b><span>ROLE</span><b>{{ person.role }}</b><span>QUOTES</span><b>{{ quotes|length }}</b></div>
+  <div><h2>Цитаты</h2>{% for q in quotes %}<div class="character-quote"><div class="quote-lang">🇬🇧 ENGLISH</div><blockquote>“{{ q.en }}”</blockquote><div class="quote-lang ru">🇷🇺 РУССКИЙ</div><blockquote>«{{ q.ru }}»</blockquote><small>{{ q.source }}</small><p class="quote-note">{{ q.note }}</p></div>{% endfor %}</div>
+</section>{% endif %}
 {% endblock %}

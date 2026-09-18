@@ -6,7 +6,8 @@
 {% for p in characters %}
 <a class="char-card large" href="/characters/{{ p.slug }}/">
   {% if p.image %}<img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden-fallback')"><div class="image-fallback hidden-fallback">{{ p.name }}<small>КАДР НЕ ЗАГРУЗИЛСЯ</small></div>{% else %}<div class="image-fallback">{{ p.name }}<small>ОРИГИНАЛЬНЫЙ ВИЗУАЛ НЕ ДОБАВЛЕН</small></div>{% endif %}
-  <div><span>{{ p.faction }}</span><h2>{{ p.name }}</h2><p>{{ p.role }}</p><small>{{ p.text }}</small>
+  <div>
+    <span>{{ p.faction }}</span><h2>{{ p.name }}</h2><p>{{ p.role }}</p><small>{{ p.text }}</small>
     <div class="mini-versions"><b>MANGA{% if p.manga_image %} ✓{% endif %}</b><b>2001{% if p.tv_image %} ✓{% endif %}</b><b>ULTIMATE{% if p.ultimate_image %} ✓{% endif %}</b></div>
   </div>
 </a>
