@@ -1,33 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}HELLSING ARCHIVE — Манга и Ultimate{% endblock %}
+{% block title %}HELLSING ARCHIVE — Манга, Война с нечистью и Ultimate{% endblock %}
 {% block content %}
-<section class="hero">
-  <div class="hero-bg"></div><div class="blood"></div>
-  <div class="hero-copy">
-    <p class="eyebrow">ROYAL ORDER OF PROTESTANT KNIGHTS / ARCHIVE</p>
-    <h1>HELL<span>S</span>ING</h1>
-    <p class="sub">МАНГА · ВОЙНА С НЕЧИСТЬЮ · ULTIMATE<br>ИСТОРИЯ МИРА, ГЕРОЕВ И МОНСТРОВ</p>
-    <div class="hero-actions"><a class="btn" href="/history/">ОТКРЫТЬ АРХИВ</a><a class="textlink" href="/characters/">ПЕРСОНАЖИ →</a></div>
-  </div>
-  <div class="seal">HELL<br>SING</div><div class="vertical">THE WORLD OF HIRANO</div>
-</section>
-
-<section class="manifesto wrap">
- <div class="section-no">01 / THE WORLD</div>
- <div><p class="kicker">НЕ ТОЛЬКО АЛУКАРД</p><h2>Три силы.<br><i>Одна война.</i></h2>
- <p class="lead">Hellsing — история о секретной организации, сверхъестественных угрозах и войне, в которой сталкиваются Хеллсинг, Искариот и Millennium. Манга Коты Хирано насчитывает десять томов; именно она стала основой двух заметных аниме-адаптаций, включая Hellsing Ultimate.</p>
- <a class="arrow" href="/history/">ИСТОРИЯ СОЗДАНИЯ →</a></div>
-</section>
-
-<section class="redband"><div class="wrap band"><span>HELLSING</span><strong>MONSTERS. FAITH. WAR. HUMANITY.</strong><span>MILLENNIUM</span></div></section>
-
-<section class="characters-preview wrap"><div class="section-no">02 / PERSONNEL</div><div><p class="kicker">DOSSIERS</p><h2>Лица войны</h2><div class="character-grid">
-{% for p in characters %}<a class="char-card" href="/characters/{{ p.slug }}/"><img src="{{ p.image }}" alt="{{ p.name }}"><div><span>{{ p.faction }}</span><h3>{{ p.name }}</h3><p>{{ p.role }}</p></div></a>{% endfor %}
-</div><a class="arrow" href="/characters/">ВСЕ ДОСЬЕ →</a></div></section>
-
-<section class="timeline-preview wrap"><div class="section-no">03 / CHRONICLE</div><div><p class="kicker">CHRONOLOGY</p><h2>От манги<br>до Ultimate</h2>{% for year,title,text in timeline %}<article class="timeline"><b>{{ year }}</b><div><h3>{{ title }}</h3><p>{{ text }}</p></div></article>{% endfor %}<a class="arrow" href="/history/">ПОЛНАЯ ХРОНОЛОГИЯ →</a></div></section>
-
-<section class="faction-strip"><div class="wrap"><p class="kicker">04 / THREE SIDES</p><div class="faction-grid">{% for name,title,text in factions %}<article><span>{{ name }}</span><h3>{{ title }}</h3><p>{{ text }}</p></article>{% endfor %}</div></div></section>
-
-<section class="quotes wrap"><div class="section-no">05 / VOICE</div><div><p class="kicker">ARCHIVE QUOTES</p>{% for q in quotes %}<blockquote>“{{ q.text }}”{% if q.source %}<cite>— {{ q.source }}</cite>{% endif %}</blockquote>{% empty %}<blockquote>“I am everywhere and nowhere.”<cite>— Schrödinger</cite></blockquote><blockquote>“Amen!”<cite>— Alexander Anderson</cite></blockquote>{% endfor %}<a class="arrow" href="/quotes/">ВСЕ ЦИТАТЫ →</a></div></section>
+<section class="hero"><div class="hero-bg"></div><div class="blood"></div><div class="hero-copy"><p class="eyebrow">ROYAL ORDER OF PROTESTANT KNIGHTS / ARCHIVE</p><h1>HELL<span>S</span>ING</h1><p class="sub">МАНГА · ВОЙНА С НЕЧИСТЬЮ · ULTIMATE<br>ПЕРСОНАЖИ · СЮЖЕТ · ЭКРАНИЗАЦИИ · ЦИТАТЫ</p><div class="hero-actions"><a class="btn" href="/plot/">ЧИТАТЬ СЮЖЕТ</a><a class="textlink" href="/characters/">ПЕРСОНАЖИ →</a></div></div><div class="seal">HELL<br>SING</div><div class="vertical">THE WORLD OF HIRANO</div></section>
+<section class="manifesto wrap"><div class="section-no">01 / THE WORLD</div><div><p class="kicker">ПОЛНЫЙ АРХИВ</p><h2>Три версии.<br><i>Один мир.</i></h2><p class="lead">Здесь разделены оригинальная манга Коты Хирано, TV-аниме 2001 года «Война с нечистью» и Hellsing Ultimate. TV-версия получает собственный сюжет, включая финальную арку Инкогнито.</p><a class="arrow" href="/adaptations/">ВСЕ ЭКРАНИЗАЦИИ →</a></div></section>
+<section class="redband"><div class="wrap band"><span>MANGA</span><strong>MONSTERS. FAITH. WAR. HUMANITY.</strong><span>ULTIMATE</span></div></section>
+<section class="characters-preview wrap"><div class="section-no">02 / PERSONNEL</div><div><p class="kicker">DOSSIERS</p><h2>Лица войны</h2><div class="character-grid">{% for p in characters %}<a class="char-card" href="/characters/{{ p.slug }}/"><img src="{{ p.image }}" alt="{{ p.name }}"><div><span>{{ p.faction }}</span><h3>{{ p.name }}</h3><p>{{ p.role }}</p></div></a>{% endfor %}</div><a class="arrow" href="/characters/">ВСЕ ДОСЬЕ →</a></div></section>
+<section class="timeline-preview wrap"><div class="section-no">03 / CHRONICLE</div><div><p class="kicker">MANGA / ULTIMATE</p><h2>Основная история</h2>{% for code,title,text in plot_arcs %}<article class="timeline"><b>{{ code }}</b><div><h3>{{ title }}</h3><p>{{ text }}</p></div></article>{% endfor %}<a class="arrow" href="/plot/">ПОЛНЫЙ СЮЖЕТ →</a></div></section>
+<section class="tv-story compact"><div class="wrap"><p class="kicker">04 / TV 2001</p><h2>Война с нечистью</h2><div class="episode-grid">{% for n,title,arc,text in tv_episodes %}<article><span>ORDER {{ n|stringformat:'02d' }}</span><h3>{{ title }}</h3><p>{{ text }}</p></article>{% endfor %}</div><a class="arrow" href="/plot/">ВСЕ 13 СЕРИЙ →</a></div></section>
+<section class="quotes wrap"><div class="section-no">05 / VOICE</div><div><p class="kicker">BILINGUAL QUOTES</p>{% for q in quotes %}<blockquote>“{{ q.en }}”<br><em>«{{ q.ru }}»</em><cite>— {{ q.character }} · {{ q.source }}</cite></blockquote>{% endfor %}<a class="arrow" href="/quotes/">ВСЕ ЦИТАТЫ →</a></div></section>
 {% endblock %}

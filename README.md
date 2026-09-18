@@ -1,45 +1,20 @@
-# Hellsing Archive — Django
+# HELLSING ARCHIVE — Django
 
-Фан-сайт по вселенной Hellsing: манга, Hellsing Ultimate, история создания, персонажи, фракции, цитаты и галерея.
+Фан-архив по Hellsing с раздельными линиями:
+- оригинальная манга;
+- Hellsing / «Война с нечистью» (TV 2001, 13 серий);
+- Hellsing Ultimate (10 OVA);
+- The Dawn;
+- персонажи и сравнение образов;
+- сюжет;
+- двуязычные цитаты.
 
-## Локальный запуск
-
+## Запуск
 ```powershell
 py -m pip install -r requirements.txt
 py manage.py migrate
 py manage.py runserver
 ```
 
-Открыть: http://127.0.0.1:8000/
-
-## Render
-
-Build command:
-
-```text
-pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
-```
-
-Start command:
-
-```text
-gunicorn config.wsgi:application
-```
-
-Environment variable:
-
-```text
-SECRET_KEY=your-secret-key
-```
-
-## Разделы
-
-- `/` — главная
-- `/history/` — история манги и адаптаций
-- `/characters/` — персонажи и отдельные досье
-- `/factions/` — Hellsing / Iscariot / Millennium
-- `/quotes/` — цитаты
-- `/gallery/` — галерея
-- `/admin/` — админка для Quote и GalleryItem
-
-Часть демо-изображений взята из Wikimedia Commons; перед коммерческим или повторным использованием проверяйте лицензию конкретного файла.
+## Важно про изображения
+В демо-архиве используются удалённые reference/key-art изображения. Перед публичным размещением замени их на изображения, права на которые у тебя есть, или храни локальные разрешённые материалы в `static/images/`.

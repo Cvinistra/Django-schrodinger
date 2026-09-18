@@ -1,6 +1,5 @@
-{% extends 'base.html' %}
-{% block title %}Сюжет Hellsing — Полный архив{% endblock %}
-{% block content %}
-<section class="pagehead wrap"><p class="eyebrow">06 / STORY ARCHIVE</p><h1>СЮЖЕТ</h1><p>СПОЙЛЕРЫ · ОСНОВНАЯ ЛИНИЯ МАНГИ / ULTIMATE</p></section>
-<section class="chronicle wrap"><div class="section-no">THE STORY</div><div>{% for n,title,text in plot_arcs %}<article class="timeline big"><b>{{ n }}</b><div><h3>{{ title }}</h3><p>{{ text }}</p></div></article>{% endfor %}</div></section>
+{% extends 'base.html' %}{% block title %}Сюжет — Hellsing Archive{% endblock %}{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">03 / STORY</p><h1>СЮЖЕТ</h1><p>ОТДЕЛЬНЫЕ ЛИНИИ КАНОНА И TV 2001</p></section>
+<section class="chronicle wrap"><div class="section-no">MANGA / ULTIMATE</div><div>{% for code,title,text in plot_arcs %}<article class="timeline big"><b>{{ code }}</b><div><h3>{{ title }}</h3><p>{{ text }}</p></div></article>{% endfor %}</div></section>
+<section class="tv-story"><div class="wrap"><p class="kicker">HELLSING 2001 / ВОЙНА С НЕЧИСТЬЮ</p><h2>13 серий отдельной сюжетной линии</h2><div class="episode-grid">{% for n,title,arc,text in tv_episodes %}<article><span>ORDER {{ n|stringformat:'02d' }}</span><h3>{{ title }}</h3><small>{{ arc }}</small><p>{{ text }}</p></article>{% endfor %}</div></div></section>
 {% endblock %}

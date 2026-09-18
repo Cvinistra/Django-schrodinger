@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
-{% block title %}Экранизации Hellsing — Архив{% endblock %}
-{% block content %}
-<section class="pagehead wrap"><p class="eyebrow">07 / SCREEN ARCHIVE</p><h1>ЭКРАНИЗАЦИИ</h1><p>TV · OVA · THE DAWN · LIVE-ACTION PROJECT</p></section>
-<section class="faction-page wrap">{% for a in adaptations %}<article><span>{{ a.year }}</span><h2>{{ a.title }}</h2><p><b>{{ a.type }}</b> · {{ a.episodes }}</p><p>{{ a.text }}</p></article>{% endfor %}</section>
-<section class="article wrap"><div class="factbox"><span>ВАЖНО</span><b>2001 ≠ Ultimate</b><span>КАНОН</span><b>Манга / Ultimate</b></div><div><h2>Почему существуют две разные истории?</h2><p>Телевизионный Hellsing вышел в 2001 году, когда манга ещё продолжалась, поэтому его поздняя часть использует собственную сюжетную линию. Hellsing Ultimate был отдельной OVA-адаптацией, значительно ближе следующей манге.</p></div></section>
+{% extends 'base.html' %}{% block title %}Экранизации — Hellsing Archive{% endblock %}{% block content %}
+<section class="pagehead wrap"><p class="eyebrow">04 / SCREEN HISTORY</p><h1>ЭКРАНИЗАЦИИ</h1><p>ВСЕ ОСНОВНЫЕ ВЕРСИИ</p></section>
+<section class="adaptations-page wrap">{% for a in adaptations %}<article class="adaptation-card"><span>{{ a.tag }}</span><h2>{{ a.title }}</h2><div class="adapt-meta"><b>{{ a.year }}</b><b>{{ a.type }}</b><b>{{ a.episodes }}</b></div><p>{{ a.text }}</p></article>{% endfor %}</section>
+<section class="tv-story"><div class="wrap"><p class="kicker">TV 2001 / EPISODES</p><h2>Война с нечистью — все 13 серий</h2><div class="episode-grid">{% for n,title,arc,text in tv_episodes %}<article><span>ORDER {{ n|stringformat:'02d' }}</span><h3>{{ title }}</h3><small>{{ arc }}</small><p>{{ text }}</p></article>{% endfor %}</div></div></section>
 {% endblock %}
